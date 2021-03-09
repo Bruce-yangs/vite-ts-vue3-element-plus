@@ -12,9 +12,10 @@ import ElementPlus from 'element-plus'
 import 'element-plus/lib/theme-chalk/index.css'
 import axios from './utils/http'
 
-const app = createApp(App)
+const app = createApp(App) 
 
-// // 全局挂载
+
+//  全局挂载
 app.config.globalProperties.$axios = axios
 
 app.use(ElementPlus)
