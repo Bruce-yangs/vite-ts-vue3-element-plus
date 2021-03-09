@@ -15,7 +15,7 @@ import axios from './utils/http'
 const app = createApp(App) 
 
 
-//  全局挂载
+//全局挂载
 app.config.globalProperties.$axios = axios
 
 app.use(ElementPlus)
