@@ -1,7 +1,7 @@
 /**
  * vite总配置文件
  */
-import path from 'path'
+ import { resolve } from "path"
 import type { UserConfig } from 'vite';
 import vue from '@vitejs/plugin-vue'
 
@@ -26,8 +26,8 @@ const viteConfig: UserConfig = {
     // 别名配置
     alias: {
         // 键必须以斜线开始和结束
-        "@": path.resolve(__dirname, "src"),
-        "comps": path.resolve(__dirname, "src/components"),
+        "@": resolve(__dirname, "src"),
+        "comps": resolve(__dirname, "src/components"),
     },
     plugins: [vue()],
     // 代理配置
