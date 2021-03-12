@@ -15,14 +15,18 @@ import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
 
 const routes: Array<RouteRecordRaw> = [
   {
-    path: '/',
-    name: 'Home',
-    component: () => import('../views/Home.vue')
+      path: '/',
+      redirect: '/login'
   },
   {
-    path: '/login',
-    name: 'login',
-    component: () => import('../views/LoginRegister.vue')
+      path: '/login',
+      name: 'Login',
+      component: () => import('../views/LoginRegister.vue')
+  },
+  {
+    path: '/index',
+    name: 'Index',
+    component: () => import('../views/Home.vue')
   },
   {
     path: '/:catchAll(.*)',
@@ -30,6 +34,60 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import('../views/404.vue')
   }
 ]
+
+
+/* routes: [
+  {
+      path: '/',
+      redirect: '/login'
+  },
+  {
+      path: '/Login',
+      name: 'login',
+      component: Login
+  },
+  {
+      path: '/index',
+      component: Index,
+      children: [
+          {
+              path:'',
+              component:Home
+          },
+          {
+              path:'/home',
+              name:'home',
+              component:Home
+          },
+          {
+              path:'/infoShow',
+              name:'infoShow',
+              component:InfoShow
+          },
+          {
+              path:'/dataList',
+              name:'dataList',
+              component:DataList
+          },
+          {
+              path:'/infoMsg',
+              name:'infoMsg',
+              component:InfoMsg
+          }
+      ]
+  },
+  {
+      path: '/register',
+      name: 'register',
+      component: Register
+  },
+  {
+      path: '*',
+      name: '/404',
+      component: NoPage
+  },
+  
+] */
 
 const router = createRouter({
   history: createWebHistory(),
