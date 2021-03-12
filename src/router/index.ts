@@ -16,13 +16,20 @@ import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
-    name: 'Home',
-    component: () => import('../views/Home.vue')
+    redirect: '/login',
+    name: 'login',
+    component: () => import('../views/LoginRegister.vue')
+    // component: () => import('../views/Home.vue')
   },
   {
     path: '/login',
     name: 'login',
     component: () => import('../views/LoginRegister.vue')
+  },
+  {
+    path: '/home',
+    name: 'home',
+    component: () => import('../views/Home.vue')
   },
   {
     path: '/:catchAll(.*)',

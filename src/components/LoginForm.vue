@@ -63,7 +63,7 @@ export default {
               localStorage.setItem('message', msg)
 
               // 路由调整
-              router.push('/')
+              router.push('/home')
             })
         } else {
           console.log('error submit!!')
