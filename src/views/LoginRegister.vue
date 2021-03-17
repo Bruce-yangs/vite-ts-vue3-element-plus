@@ -37,7 +37,7 @@
     </div>
   </div>
 </template>
-<script lang="ts">
+<script lang="ts" >
 import { ref } from "vue";
 import { loginUser, rules } from "@/utils/loginValidators";
 import { registerUser, registerRules } from "@/utils/registerValidators";

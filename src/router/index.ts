@@ -13,6 +13,7 @@ export default router */
 
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
 
+
 const routes: Array<RouteRecordRaw> = [
   {
       path: '/',
@@ -26,7 +27,8 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/index',
     name: 'Index',
-    component: () => import('../views/Home.vue')
+    component: () => import('../views/Index.vue')
+    // component: () => import('../views/Home.vue')
   },
   {
     path: '/home',
