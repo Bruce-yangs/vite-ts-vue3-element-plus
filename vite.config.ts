@@ -24,15 +24,23 @@ const viteConfig: UserConfig = {
     // 打包后目录,默认dist
     // outDir: 'www',
     // 别名配置
-    alias: {
-        // 键必须以斜线开始和结束
+    resolve: {
+        alias: {
+          // 键必须以斜线开始和结束
         "@": resolve(__dirname, "src"),
         "comps": resolve(__dirname, "src/components"),
-    },
+        }
+      },
     plugins: [vue()],
     // 代理配置
     proxy: {
         // '/xx': 'http://10.192.195.96:8087',
+
+        /* '/api': {
+            target: 'http://jsonplaceholder.typicode.com',
+            changeOrigin: true,
+            rewrite: path => path.replace(/^\/api/, '') */
+   
     }
 }
 
