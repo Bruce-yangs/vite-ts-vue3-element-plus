@@ -5,8 +5,9 @@
   <div id="app" class="container">
     <!-- <router-view /> -->
     <GlobalHeader :user="currentUser" />
+    <router-view></router-view>
     <!-- <ColumnList :list="list" /> -->
-    <ValidateForm @form-submit="onFormSubmit">
+    <!-- <ValidateForm @form-submit="onFormSubmit">
       <div class="mb-3">
         <label for="" class="form-label">邮箱地址</label>
         <validate-input
@@ -23,7 +24,7 @@
           placeholder="请输入QQ"
           :rules="QQRules"
           v-model="QQVal"
-        ></validate-input> <!-- ref="inputRef" -->
+        ></validate-input> 
       </div>
       <div class="mb-3">
         <label for="exampleInputEmail1" class="form-label">Email address</label>
@@ -50,12 +51,21 @@
         <input type="checkbox" class="form-check-input" id="exampleCheck1" />
         <label class="form-check-label" for="exampleCheck1">Check me out</label>
       </div>
-      <!-- <button type="submit" class="btn btn-primary">Submit</button> -->
       <template #submit>
-        <!-- <template v-slot:submit> -->
         <span class="btn btn-danger">submit</span>
       </template>
-    </ValidateForm>
+    </ValidateForm> -->
+    <footer class="text-center py-4 text-secondary bg-light mt-6">
+      <small>
+        <ul class="list-inline mb-0">
+          <li class="list-inline-item"> ©2021 杨坤</li>
+          <li class="list-inline-item">读书</li>
+          <li class="list-inline-item">学习</li>
+          <li class="list-inline-item">音乐</li>
+          <li class="list-inline-item">锻炼</li>
+        </ul>
+      </small>
+    </footer>
   </div>
 </template>
 

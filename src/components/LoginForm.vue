@@ -46,7 +46,7 @@ export default {
     const router = useRouter()
     // 登录方法
     const handleLogin = (formName: string) => {
-       router.push('/index')
+       router.push('/')
       ctx.$refs[formName].validate((valid: boolean) => {
         if (valid) {
           ctx.$axios.post('/api/regit', props.loginUser)
@@ -64,7 +64,7 @@ export default {
               localStorage.setItem('message', msg)
 
               // 路由调整
-              router.push('/index')
+              router.push('/')
             })
         } else {
           console.log('error submit!!')

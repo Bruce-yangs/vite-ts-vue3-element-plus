@@ -15,10 +15,10 @@ import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
 
 
 const routes: Array<RouteRecordRaw> = [
-  {
-      path: '/',
+  /* {
+      path: '/login',
       redirect: '/login'
-  },
+  }, */
   {
       path: '/login',
       name: 'Login',
@@ -31,9 +31,14 @@ const routes: Array<RouteRecordRaw> = [
     // component: () => import('../views/Home.vue')
   },
   {
-    path: '/home',
+    path: '/',
     name: 'home',
     component: () => import('../views/Home.vue')
+  },
+  {
+    path: '/column/:id',
+    name: 'column',
+    component: () => import('../views/ColumnDetail.vue')
   },
   {
     path: '/:catchAll(.*)',

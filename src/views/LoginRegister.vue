@@ -39,7 +39,9 @@
 </template>
 <script lang="ts" >
 import { ref } from "vue";
+// @ts-ignore
 import { loginUser, rules } from "@/utils/loginValidators";
+// @ts-ignore
 import { registerUser, registerRules } from "@/utils/registerValidators";
 import LoginForm from "@/components/LoginForm.vue";
 import RegisterForm from "@/components//RegisterForm.vue";
