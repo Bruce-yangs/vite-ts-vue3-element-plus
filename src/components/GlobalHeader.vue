@@ -20,7 +20,7 @@
             <a class="dropdown-item" href="#">编辑资料</a>                    
           </dropdown-item>
           <dropdown-item>
-            <a class="dropdown-item" href="#">退出登录</a>                    
+            <a class="dropdown-item" href="#" @click.stop="onClickOut">退出登录</a>                    
           </dropdown-item>
         </dropdown>
       </li>
@@ -30,6 +30,7 @@
 
 <script lang="ts">
 import { computed, defineComponent, PropType } from "vue";
+import { useRouter } from "vue-router";
 import Dropdown from "./Dropdown.vue";
 import DropdownItem from './DropdownItem.vue';
 
@@ -48,6 +49,10 @@ export default defineComponent({
     },
   },
   setup(props) {
+    const router = useRouter();
+    const onClickOut = () => {
+      router.push('/login')
+    }
     // const columnListData = computed(() => {
     //   return props.list.map((column) => {
     //     if (!column.avatar) {
@@ -59,7 +64,7 @@ export default defineComponent({
     //   });
     // });
     // // columnList.value = columnListData;
-    // return { props };
+    return { props,onClickOut };
   },
 });
 </script>

@@ -1,9 +1,10 @@
 <template>
-  <div class="home-page">
-    <section class="py-5 text-center container">
+  <div class="home-page container">
+    <GlobalHeader :user="currentUser" />
+    <!-- <section class="py-5 text-center container">
       <div class="row py-lg-5">
         <div class="col-lg-6 col-md-8 mx-auto">
-          <img src="../assets/callout.svg" alt="callout" class="w-50"/>
+          <img src="../assets/callout.svg" alt="callout" class="w-50" />
           <h2 class="font-weight-light">随心写作，自由表达</h2>
           <p>
             <a href="#" class="btn btn-primary my-2">开始写文章</a>
@@ -12,23 +13,41 @@
       </div>
     </section>
     <h4 class="font-weight-bold text-center">发现精彩</h4>
-    <column-list :list="list"></column-list>
-   <!--  <button
+    <column-list :list="list"></column-list> -->
+    <router-view></router-view>
+    <!--  <button
       class="btn btn-outline-primary mt-2 mb-5 mx-auto btn-block w-25"
        @click="loadMorePage" v-if="!isLastPage"
     >
       加载更多
     </button> -->
-
+    <footer class="text-center py-4 text-secondary bg-light mt-6">
+      <small>
+        <ul class="list-inline mb-0">
+          <li class="list-inline-item">©2021 杨坤</li>
+          <li class="list-inline-item">读书</li>
+          <li class="list-inline-item">学习</li>
+          <li class="list-inline-item">音乐</li>
+          <li class="list-inline-item">锻炼</li>
+        </ul>
+      </small>
+    </footer>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, computed, onMounted } from 'vue'
+import { defineComponent, computed, onMounted } from "vue";
 /* import { useStore } from 'vuex'
 import { GlobalDataProps } from '../store'
 import useLoadMore from '../hooks/useLoadMore' */
-import ColumnList,{ColumnProps} from '../components/ColumnList.vue'
+import ColumnList, { ColumnProps } from "../components/ColumnList.vue";
+import "bootstrap/dist/css/bootstrap.min.css";
+import GlobalHeader, { UserProps } from "../components/GlobalHeader.vue";
+/* import ValidateInput, { RulesProp } from "./components/ValidateInput.vue";
+import ValidateForm from "./components/ValidateForm.vue"; */
+
+const currentUser: UserProps = { isLogin: true, name: "viki" };
+
 const testData: ColumnProps[] = [
   {
     id: 1,
@@ -60,14 +79,14 @@ const testData: ColumnProps[] = [
   },
 ];
 export default defineComponent({
-  name: 'Home',
+  name: "Home",
   components: {
-    ColumnList
+    ColumnList,
+    GlobalHeader,
   },
   setup() {
     const list = testData;
-    return {list}
-
+    return { list, currentUser };
 
     /* const store = useStore<GlobalDataProps>()
     const total = computed(() => store.state.columns.total)
@@ -82,6 +101,6 @@ export default defineComponent({
       loadMorePage,
       isLastPage
     } */
-  }
-})
+  },
+});
 </script>

@@ -2,9 +2,9 @@
   <!-- <img alt="Vue logo" src="./assets/logo.png" />
   <HelloWorld msg="Hello Vue 3 + TypeScript + Vite" />
   <Index/> -->
-  <div id="app" class="container">
+  <div id="app"><!--  class="container" -->
     <!-- <router-view /> -->
-    <GlobalHeader :user="currentUser" />
+    <!-- <GlobalHeader :user="currentUser" /> -->
     <router-view></router-view>
     <!-- <ColumnList :list="list" /> -->
     <!-- <ValidateForm @form-submit="onFormSubmit">
@@ -55,7 +55,7 @@
         <span class="btn btn-danger">submit</span>
       </template>
     </ValidateForm> -->
-    <footer class="text-center py-4 text-secondary bg-light mt-6">
+   <!--  <footer class="text-center py-4 text-secondary bg-light mt-6">
       <small>
         <ul class="list-inline mb-0">
           <li class="list-inline-item"> ©2021 杨坤</li>
@@ -65,7 +65,7 @@
           <li class="list-inline-item">锻炼</li>
         </ul>
       </small>
-    </footer>
+    </footer> -->
   </div>
 </template>
 

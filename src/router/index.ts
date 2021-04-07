@@ -15,8 +15,8 @@ import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
 
 
 const routes: Array<RouteRecordRaw> = [
-  /* {
-      path: '/login',
+ /*  {
+      path: '/',
       redirect: '/login'
   }, */
   {
@@ -33,13 +33,25 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
     name: 'home',
-    component: () => import('../views/Home.vue')
+    component: () => import('../views/Home.vue'),
+    children: [
+     /*  {
+        path: '/caseStatistics',
+        component: import('views/caseStatisticsManage/caseStatistics.vue')
+      }, */
+      {
+        path: '/column/:id',
+        name: 'column',
+        component: () => import('../views/ColumnDetail.vue')
+      },
+      {
+        path: '/columnInfo',
+        name: 'columnInfo',
+        component: () => import('../views/ColumnListInfo.vue')
+      },
+    ]
   },
-  {
-    path: '/column/:id',
-    name: 'column',
-    component: () => import('../views/ColumnDetail.vue')
-  },
+  
   {
     path: '/:catchAll(.*)',
     name: '/404',

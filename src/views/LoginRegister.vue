@@ -1,7 +1,7 @@
 <template>
-  <div class="container" :class="{ 'sign-up-mode': signUpMode }">
+  <div class="containers" :class="{ 'sign-up-mode': signUpMode }">
     <!--form 表单容器-->
-    <div class="forms-container">
+    <div class="forms-containers">
       <div class="signin-signup">
         <!-- 登录 -->
         <LoginForm :loginUser="loginUser" :rules="rules" />
@@ -13,7 +13,7 @@
       </div>
     </div>
     <!-- 左右切换动画 -->
-    <div class="panels-container">
+    <div class="panels-containers">
       <div class="panel left-panel">
         <div class="content">
           <h3>学习是为了有更多的选择，让生活变得更加美好</h3>
@@ -65,7 +65,7 @@ export default {
 };
 </script>
 <style scoped>
-.container {
+.containers {
   position: relative;
   width: 100%;
   background-color: #fff;
@@ -73,7 +73,7 @@ export default {
   overflow: hidden;
 }
 
-.forms-container {
+.forms-containers {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -143,7 +143,7 @@ export default {
   background-color: #4d84e2;
 }
 
-.panels-container {
+.panels-containers {
   position: absolute;
   height: 100%;
   width: 100%;
@@ -153,7 +153,7 @@ export default {
   grid-template-columns: repeat(2, 1fr);
 }
 
-.container:before {
+.containers:before {
   content: "";
   position: absolute;
   height: 2000px;
@@ -226,45 +226,45 @@ export default {
 
 /* ANIMATION */
 
-.container.sign-up-mode:before {
+.containers.sign-up-mode:before {
   transform: translate(100%, -50%);
   right: 52%;
 }
 
-.container.sign-up-mode .left-panel .image,
-.container.sign-up-mode .left-panel .content {
+.containers.sign-up-mode .left-panel .image,
+.containers.sign-up-mode .left-panel .content {
   transform: translateX(-800px);
 }
 
-.container.sign-up-mode .signin-signup {
+.containers.sign-up-mode .signin-signup {
   left: 25%;
 }
 
-.container.sign-up-mode form.sign-up-form {
+.containers.sign-up-mode form.sign-up-form {
   opacity: 1;
   z-index: 2;
 }
 
-.container.sign-up-mode form.sign-in-form {
+.containers.sign-up-mode form.sign-in-form {
   opacity: 0;
   z-index: 1;
 }
 
-.container.sign-up-mode .right-panel .image,
-.container.sign-up-mode .right-panel .content {
+.containers.sign-up-mode .right-panel .image,
+.containers.sign-up-mode .right-panel .content {
   transform: translateX(0%);
 }
 
-.container.sign-up-mode .left-panel {
+.containers.sign-up-mode .left-panel {
   pointer-events: none;
 }
 
-.container.sign-up-mode .right-panel {
+.containers.sign-up-mode .right-panel {
   pointer-events: all;
 }
 
 @media (max-width: 870px) {
-  .container {
+  .containers {
     min-height: 800px;
     height: 100vh;
   }
@@ -277,11 +277,11 @@ export default {
   }
 
   .signin-signup,
-  .container.sign-up-mode .signin-signup {
+  .containers.sign-up-mode .signin-signup {
     left: 50%;
   }
 
-  .panels-container {
+  .panels-containers {
     grid-template-columns: 1fr;
     grid-template-rows: 1fr 2fr 1fr;
   }
@@ -329,7 +329,7 @@ export default {
     font-size: 0.7rem;
   }
 
-  .container:before {
+  .containers:before {
     width: 1500px;
     height: 1500px;
     transform: translateX(-50%);
@@ -340,19 +340,19 @@ export default {
     transition: 2s ease-in-out;
   }
 
-  .container.sign-up-mode:before {
+  .containers.sign-up-mode:before {
     transform: translate(-50%, 100%);
     bottom: 32%;
     right: initial;
   }
 
-  .container.sign-up-mode .left-panel .image,
-  .container.sign-up-mode .left-panel .content {
+  .containers.sign-up-mode .left-panel .image,
+  .containers.sign-up-mode .left-panel .content {
     transform: translateY(-300px);
   }
 
-  .container.sign-up-mode .right-panel .image,
-  .container.sign-up-mode .right-panel .content {
+  .containers.sign-up-mode .right-panel .image,
+  .containers.sign-up-mode .right-panel .content {
     transform: translateY(0px);
   }
 
@@ -361,7 +361,7 @@ export default {
     transform: translateY(300px);
   }
 
-  .container.sign-up-mode .signin-signup {
+  .containers.sign-up-mode .signin-signup {
     top: 5%;
     transform: translate(-50%, 0);
   }
@@ -380,16 +380,16 @@ export default {
     padding: 0.5rem 1rem;
   }
 
-  .container {
+  .containers {
     padding: 1.5rem;
   }
 
-  .container:before {
+  .containers:before {
     bottom: 72%;
     left: 50%;
   }
 
-  .container.sign-up-mode:before {
+  .containers.sign-up-mode:before {
     bottom: 28%;
     left: 50%;
   }
