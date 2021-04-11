@@ -20,7 +20,7 @@
             <a class="dropdown-item" href="#">编辑资料</a>                    
           </dropdown-item>
           <dropdown-item>
-            <a class="dropdown-item" href="#" @click.stop="onClickOut">退出登录</a>                    
+            <a class="dropdown-item" href="#" @click.stop.prevent="onClickOut">退出登录</a>                    
           </dropdown-item>
         </dropdown>
       </li>
@@ -31,6 +31,7 @@
 <script lang="ts">
 import { computed, defineComponent, PropType } from "vue";
 import { useRouter } from "vue-router";
+import { useStore } from "vuex";
 import Dropdown from "./Dropdown.vue";
 import DropdownItem from './DropdownItem.vue';
 
@@ -49,7 +50,10 @@ export default defineComponent({
     },
   },
   setup(props) {
-    const router = useRouter();
+    const router = useRouter()
+    const store = useStore()
+    const user = computed(() => store.state.user)
+
     const onClickOut = () => {
       router.push('/login')
     }
@@ -63,8 +67,9 @@ export default defineComponent({
     //     return column;
     //   });
     // });
-    // // columnList.value = columnListData;
-    return { props,onClickOut };
+    // // columnList.value = columnListData; user
+    // return { props,onClickOut };
+    return { user,onClickOut };
   },
 });
 </script>

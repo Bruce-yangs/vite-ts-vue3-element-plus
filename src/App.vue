@@ -78,7 +78,6 @@ import ValidateForm from "./components/ValidateForm.vue";
 import { defineComponent, ref } from "vue";
 // import HelloWorld from './components/HelloWorld.vue'
 // import Index from './views/Index.vue'
-const currentUser: UserProps = { isLogin: true, name: "viki" };
 const testData: ColumnProps[] = [
   {
     id: 1,
@@ -134,7 +133,7 @@ export default defineComponent({
     const onFormSubmit = (result: boolean) => {
       console.log("123", result);
     };
-    return { list: testData, currentUser, emailRules,QQVal, QQRules, onFormSubmit, emailVal, inputRef };
+    return { list: testData,  emailRules,QQVal, QQRules, onFormSubmit, emailVal, inputRef };
   },
   components: {
     ColumnList,

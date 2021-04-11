@@ -29,6 +29,7 @@
 <script lang="ts">
 import { getCurrentInstance } from 'vue'
 import { useRouter } from 'vue-router'
+import { useStore } from 'vuex'
 export default {
   props: {
     loginUser: {
@@ -44,8 +45,12 @@ export default {
     // @ts-ignore
     const { ctx } = getCurrentInstance()
     const router = useRouter()
+    const store = useStore()
+
     // 登录方法
     const handleLogin = (formName: string) => {
+      store.commit('login','Bruce')
+
        router.push('/')
       ctx.$refs[formName].validate((valid: boolean) => {
         if (valid) {

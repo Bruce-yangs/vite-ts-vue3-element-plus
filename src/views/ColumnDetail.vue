@@ -18,15 +18,19 @@
 import { defineComponent, reactive } from "vue";
 import { useRoute } from "vue-router";
 import { testData, testPosts  } from "../data/testData";
+import PostList from "../components/PostList.vue";
 
 export default defineComponent({
   name: "Column",
+  components: {PostList},
   setup: () => {
     const route = useRoute();
     // const datas = reactive({ count: 521 });
     const currentId = +route.params.id 
     const column = testData.find(c => c.id === currentId)
-    const list = testPosts.find(post => post.columnId === currentId)
+    const list = testPosts.filter(post => post.columnId === currentId)
+    console.log(list)
+
     console.log(column)
     return {  column,list };
   },
