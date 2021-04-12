@@ -19,6 +19,7 @@ import { defineComponent, reactive } from "vue";
 import { useRoute } from "vue-router";
 import { testData, testPosts  } from "../data/testData";
 import PostList from "../components/PostList.vue";
+import store from "../store";
 
 export default defineComponent({
   name: "Column",
@@ -26,9 +27,9 @@ export default defineComponent({
   setup: () => {
     const route = useRoute();
     // const datas = reactive({ count: 521 });
-    const currentId = +route.params.id 
-    const column = testData.find(c => c.id === currentId)
-    const list = testPosts.filter(post => post.columnId === currentId)
+    const currentId = +route.params.id   
+    const column = store.getters.getColumnById(currentId)
+    const list = store.getters.getPostsByCId(currentId)
     console.log(list)
 
     console.log(column)

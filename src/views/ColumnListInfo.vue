@@ -3,7 +3,7 @@
       <div class="row py-lg-5">
         <div class="col-lg-6 col-md-8 mx-auto">
           <img src="../assets/callout.svg" alt="callout" class="w-50" />
-          <h2 class="font-weight-light">随心写作，自由表达</h2>
+          <h2 class="font-weight-light">随心写作，自由表达</h2>{{Len}}
           <p>
             <a href="#" class="btn btn-primary my-2">开始写文章</a>
           </p>
@@ -15,10 +15,11 @@
 </template>
 
 <script lang="ts"  >
-import { defineComponent, reactive } from "vue";
+import { computed, defineComponent, reactive } from "vue";
 import ColumnList, { ColumnProps } from "../components/ColumnList.vue";
 
 import { useRoute } from "vue-router";
+import store from "../store";
 const testData: ColumnProps[] = [
   {
     id: 1,
@@ -58,10 +59,11 @@ export default defineComponent({
     const route = useRoute();
     // const datas = reactive({ count: 521 });
     const currentId = +route.params.id 
+    const Len = computed(() => store.getters.biggerColumnsLen)
  /*    const column = testData.find(c => c.id === currentId)
     const list = testPosts.find(post => post.columnId === currentId)
     console.log(column) */
-    return {  list:testData };
+    return {  list:testData,Len };
   },
 });
 </script>

@@ -49,6 +49,11 @@ const routes: Array<RouteRecordRaw> = [
         name: 'columnInfo',
         component: () => import('../views/ColumnListInfo.vue')
       },
+      {
+        path: '/create',
+        name: 'create',
+        component: () => import('../views/CreatePost.vue')
+      },
     ]
   },
   
