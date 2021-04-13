@@ -14,7 +14,7 @@
         <!-- <a href="#" class="btn btn-outline-light my-2">你好 {{user.name}}</a> -->
         <dropdown :title="`你好${user.name}`">
           <dropdown-item>
-            <a class="dropdown-item" href="#">新建文字</a>                    
+            <a class="dropdown-item" href="#"  @click.stop.prevent="onClickNew">新建文字</a>                    
           </dropdown-item>
           <dropdown-item disabled>
             <a class="dropdown-item" href="#">编辑资料</a>                    
@@ -55,6 +55,7 @@ export default defineComponent({
     const user = computed(() => store.state.user)
 
     const onClickOut = () => {
+      store.commit('outlogin')
       router.push('/login')
     }
     // const columnListData = computed(() => {
@@ -69,7 +70,11 @@ export default defineComponent({
     // });
     // // columnList.value = columnListData; user
     // return { props,onClickOut };
-    return { user,onClickOut };
+
+    const onClickNew = () => {
+      router.push({name:'create'})
+    }
+    return { user,onClickOut,onClickNew };
   },
 });
 </script>

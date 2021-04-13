@@ -12,16 +12,32 @@ export interface GlobalDataProps {
     user: UserProps;
 }
 
+// export interface PostProps {
+//     _id?: string;
+//     title: string;
+//     excerpt?: string;
+//     content?: string;
+//     // image?: ImageProps | string;
+//     createdAt?: string;
+//     column: string;
+//     author?: string | UserProps;
+//     isHTML?: boolean;
+//   }
+
 const store = createStore<GlobalDataProps>({
     state: {
         columns: testData,
         posts: testPosts,
-        user: { isLogin: true,columnId: 1}
+        user: { isLogin: true,columnId: 1,name: 'Bruce'}
     },
     mutations: {
         login(state,params) {
             console.log(state,params)
             state.user = { ...state.user, isLogin: true, name:  params}
+            // state.count++
+        },
+        outlogin(state,params) {
+            state.user = { ...state.user, isLogin: false, name:  params}
             // state.count++
         },
         createPost(state, newPost) {

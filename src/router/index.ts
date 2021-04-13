@@ -12,7 +12,7 @@ export default router */
 
 
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
-
+import store from '../store'
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -22,7 +22,8 @@ const routes: Array<RouteRecordRaw> = [
   {
       path: '/login',
       name: 'Login',
-      component: () => import('../views/LoginRegister.vue')
+      component: () => import('../views/LoginRegister.vue'),
+      meta: {redirectAlreadyLogin: true}
   },
   {
     path: '/index',
@@ -52,7 +53,8 @@ const routes: Array<RouteRecordRaw> = [
       {
         path: '/create',
         name: 'create',
-        component: () => import('../views/CreatePost.vue')
+        component: () => import('../views/CreatePost.vue'),
+        meta: {requiredLogin: true}
       },
     ]
   },
@@ -123,5 +125,20 @@ const router = createRouter({
   // history: createWebHistory(process.env.BASE_URL),
   routes
 })
+
+router.beforeEach((to, from, next) => {
+  console.log(to)
+  console.log(from)
+  if(to.meta.requiredLogin  && !store.state.user.isLogin) {
+    next({name: 'Login'})/* LoginRegister */
+  } 
+  else if(to.meta.redirectAlreadyLogin  && store.state.user.isLogin) {
+    next({name: 'columnInfo'})/* LoginRegister */
+  } else {
+    next()
+  }
+ 
+})
+
 
 export default router
