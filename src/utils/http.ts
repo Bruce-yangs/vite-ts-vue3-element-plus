@@ -23,6 +23,8 @@ const endLoading = () => {
 
 // 请求拦截
 axios.interceptors.request.use((config: AxiosRequestConfig) => {
+  //默认请求带上相关参数 icode: 'C6A6C4086133360B'
+  config.params = { ...config.params, icode: 'C6A6C4086133360B'}
   // 加载loading
   startLoading()
   return config
