@@ -87,7 +87,6 @@ const store = createStore<GlobalDataProps>({
         }
     },
     getters: {
-       
         getColumnById: (state) => (id: string) => {
             return state.columns.find(c => c._id === id)
         },

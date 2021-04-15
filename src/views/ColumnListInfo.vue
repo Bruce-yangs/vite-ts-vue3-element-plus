@@ -17,10 +17,10 @@
 <script lang="ts"  >
 import { computed, defineComponent, onMounted, reactive } from "vue";
 import ColumnList, { ColumnProps } from "../components/ColumnList.vue";
-
+import  {testData} from '../data/testData'
 import { useRoute } from "vue-router";
 import store from "../store";
-const testData: ColumnProps[] = [
+/* const testData: ColumnProps[] = [
   {
     id: 1,
     title: "test1的专栏",
@@ -49,7 +49,7 @@ const testData: ColumnProps[] = [
     // avatar:
     // "https://sf3-ttcdn-tos.pstatp.com/img/user-avatar/612ecba34e3035f2f395dff412dcc8b3~300x300.image",
   },
-];
+]; */
 export default defineComponent({
   name: "columnInfo",
   components: {
