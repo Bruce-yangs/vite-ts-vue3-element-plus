@@ -38,13 +38,15 @@ export interface GlobalDataProps {
     columns: ColumnProps[];
     posts: PostProps[];
     user: UserProps;
+    loading: Boolean;
 }
 
 const store = createStore<GlobalDataProps>({
     state: {
         columns: [],
         posts: [],
-        user: { isLogin: true, columnId: 1, name: 'Bruce' }
+        user: { isLogin: true, columnId: 1, name: 'Bruce' },
+        loading: false
     },
     mutations: {
         login(state, params) {
@@ -67,6 +69,9 @@ const store = createStore<GlobalDataProps>({
         },
         fetchPosts(state, rawData) {
             state.columns = rawData.data.list
+        },
+        setLoading(state, params) {
+            state.loading = params
         }
     },
     actions: {

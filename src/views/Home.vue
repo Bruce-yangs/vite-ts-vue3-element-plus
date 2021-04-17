@@ -14,6 +14,9 @@
     </section>
     <h4 class="font-weight-bold text-center">发现精彩</h4>
     <column-list :list="list"></column-list> -->
+
+    <!-- <Loader background="rgba(0,0,0,.8)" text="拼命加载ing..." v-if="$store.state.loading"></Loader>   -->
+
     <router-view></router-view>
     <!--  <button
       class="btn btn-outline-primary mt-2 mb-5 mx-auto btn-block w-25"
@@ -44,7 +47,10 @@ import ColumnList, { ColumnProps } from "../components/ColumnList.vue";
 import "bootstrap/dist/css/bootstrap.min.css";
 import GlobalHeader, { UserProps } from "../components/GlobalHeader.vue";
 import { useStore } from "vuex";
-import { GlobalDataProps } from "~/store";
+import { GlobalDataProps } from "../store";
+import Loader from '../components/Loader.vue'
+/* 自定义loading */
+
 /* import ValidateInput, { RulesProp } from "./components/ValidateInput.vue";
 import ValidateForm from "./components/ValidateForm.vue"; */
 
@@ -54,7 +60,7 @@ export default defineComponent({
   name: "Home",
   components: {
     ColumnList,
-    GlobalHeader,
+    GlobalHeader,Loader
   },
   setup() {
     // const list = testData;

@@ -1,5 +1,8 @@
 import axios, { AxiosRequestConfig, AxiosResponse } from 'axios'
 import { ElLoading } from 'element-plus'
+import store from '../store'
+
+
 
 let loading: any
 
@@ -25,6 +28,8 @@ const endLoading = () => {
 axios.interceptors.request.use((config: AxiosRequestConfig) => {
   //默认请求带上相关参数 icode: 'C6A6C4086133360B'
   config.params = { ...config.params, icode: 'C6A6C4086133360B'}
+  /* store.commit('setLoading',true)
+  console.log(store.state.loading) */
   // 加载loading
   startLoading()
   return config
@@ -34,9 +39,19 @@ axios.interceptors.request.use((config: AxiosRequestConfig) => {
 axios.interceptors.response.use((response: AxiosResponse<any>) => {
   // 介绍loading
   endLoading()
+  /* store.commit('setLoading',false)
+  console.log('store.state.loading结束')
+
+  console.log(store.state.loading) */
+
+
   return response
 }, error => {
   endLoading()
+ /*  store.commit('setLoading',false)
+
+  console.log(store.state.loading) */
+
   // 错误提醒
   return Promise.reject(error)
 })
