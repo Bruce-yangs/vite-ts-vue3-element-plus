@@ -1,4 +1,4 @@
-import { createStore } from 'vuex'
+import { Commit, createStore } from 'vuex'
 // import { testData, testPosts,/*  ColumnProps, PostProps */ } from "../data/testData"
 import axios from '../utils/http'
 
@@ -39,6 +39,17 @@ export interface GlobalDataProps {
     posts: PostProps[];
     user: UserProps;
     loading: Boolean;
+    token: string;
+}
+const getAndCommit = async(url: string, mutationName: string, commit: Commit) => {
+    const { data } = await axios.get(url)
+    commit(mutationName, data)
+}
+
+const postAndCommit = async(url: string, mutationName: string, commit: Commit, payload: any) => {
+    const { data } = await axios.post(url, payload)
+    commit(mutationName, data)
+    return data
 }
 
 const store = createStore<GlobalDataProps>({
@@ -46,14 +57,15 @@ const store = createStore<GlobalDataProps>({
         columns: [],
         posts: [],
         user: { isLogin: true, columnId: 1, name: 'Bruce' },
-        loading: false
+        loading: false,
+        token: localStorage.getItem('token') || ''
     },
     mutations: {
-        login(state, params) {
-            console.log(state, params)
-            state.user = { ...state.user, isLogin: true, name: params }
-            // state.count++
-        },
+        // login(state, params) {
+        //     console.log(state, params)
+        //     state.user = { ...state.user, isLogin: true, name: params }
+        //     // state.count++
+        // },
         outlogin(state, params) {
             state.user = { ...state.user, isLogin: false, name: params }
             // state.count++
@@ -72,22 +84,39 @@ const store = createStore<GlobalDataProps>({
         },
         setLoading(state, params) {
             state.loading = params
+        },
+        fetchCurrentUser(state, rawData) {
+            state.user = { isLogin: true, ...rawData.data }
+        },
+        login(state, rawData) {
+            const { token } = rawData.data
+            state.token = token
+            axios.defaults.headers.common.Authorization = `Bearer ${token}`
+            state.token = rawData.data.token
+            localStorage.setItem('token', token)
         }
     },
     actions: {
-        fetchColumns(context) {
-            axios.get('/columns').then(res => {
-                context.commit('fetchColumns', res.data)
-            })
+        fetchColumns({ commit }) {
+            getAndCommit('/columns', 'fetchColumns', commit)
         },
         fetchColumn({ commit },cid) {
-            axios.get(`/columns/${cid}`).then(res => {
-                commit('fetchColumn', res.data)
-            })
+            getAndCommit(`/columns/${cid}`, 'fetchColumn', commit)
         },
         fetchPosts({ commit },cid) {
-            axios.get(`/columns/${cid}/posts`).then(res => {
-                commit('fetchPosts', res.data)
+            getAndCommit(`/columns/${cid}/posts`, 'fetchPosts', commit)
+        },
+        login({commit}, payload) {
+            return postAndCommit('/user/login', 'login', commit, payload)
+        },
+        fetchCurrentUser({commit}) {
+             getAndCommit('/user/current', 'fetchCurrentUser', commit)
+        },
+
+        /* 组合actions */
+        loginAndFetch({ dispatch }, loginData) {
+            return dispatch('login', loginData).then(() => {
+                return dispatch('fetchCurrentUser')
             })
         }
     },

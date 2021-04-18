@@ -67,6 +67,16 @@ export default {
               const { msg } = res.data
               console.log('msg=' + msg)
               localStorage.setItem('message', msg)
+              const payload = {  
+                email: props.loginUser.email,
+                password: props.loginUser.password,
+              }
+
+              //登录请求  以store 方式实现  配合组合actions
+              store.dispatch('loginAndFetch', payload).then(data => {
+                console.log(data)
+                router.push('/')
+              })
 
               // 路由调整
               router.push('/')
