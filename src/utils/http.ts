@@ -46,14 +46,18 @@ axios.interceptors.response.use((response: AxiosResponse<any>) => {
 
 
   return response
-}, error => {
+}, e => {
+ 
   endLoading()
- /*  store.commit('setLoading',false)
-
+ /* 
+   const { error } = e.response.data
+ store.commit('setError',{ status: true, message: error})
+ store.commit('setLoading',false)
+ 
   console.log(store.state.loading) */
 
   // 错误提醒
-  return Promise.reject(error)
+  return Promise.reject(e)
 })
 
 export default axios

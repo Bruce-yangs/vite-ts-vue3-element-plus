@@ -34,7 +34,12 @@ export interface ColumnProps {
     description?: string;
 }
 
+export interface GlobalErrorProps {
+    status: boolean;
+    message?: string;
+}
 export interface GlobalDataProps {
+    error: GlobalErrorProps;
     columns: ColumnProps[];
     posts: PostProps[];
     user: UserProps;
@@ -54,6 +59,7 @@ const postAndCommit = async(url: string, mutationName: string, commit: Commit, p
 
 const store = createStore<GlobalDataProps>({
     state: {
+        error: { status: false },
         columns: [],
         posts: [],
         user: { isLogin: true, columnId: 1, name: 'Bruce' },
@@ -94,6 +100,9 @@ const store = createStore<GlobalDataProps>({
             axios.defaults.headers.common.Authorization = `Bearer ${token}`
             state.token = rawData.data.token
             localStorage.setItem('token', token)
+        },
+        setError(state, e: GlobalErrorProps) {
+            state.error = e
         }
     },
     actions: {
