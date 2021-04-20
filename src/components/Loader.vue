@@ -17,8 +17,8 @@
   </teleport>
 </template>
 
-<script lang="ts" setup>
-import { defineProps, onUnmounted } from "vue";
+<script lang="ts" >
+import {onUnmounted } from "vue";
 export default {
   props: {
     text: {
@@ -38,16 +38,7 @@ export default {
   },
 };
 
-/* export default {
-  props: {
-    text: {
-      type: String,
-    },
-    background: {
-      type: String,
-    },
-  },
-}; */
+
 </script>
 
 <style>

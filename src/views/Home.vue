@@ -1,5 +1,6 @@
 <template>
   <div class="home-page container">
+    <Message type="error" :message="error.message"></Message> 
     <GlobalHeader :user="currentUser" />
     <!-- <section class="py-5 text-center container">
       <div class="row py-lg-5">
@@ -43,12 +44,13 @@ import { defineComponent, computed, onMounted } from "vue";
 /* import { useStore } from 'vuex'
 import { GlobalDataProps } from '../store'
 import useLoadMore from '../hooks/useLoadMore' */
-import ColumnList, { ColumnProps } from "../components/ColumnList.vue";
+import ColumnList from "../components/ColumnList.vue";
 import "bootstrap/dist/css/bootstrap.min.css";
 import GlobalHeader, { UserProps } from "../components/GlobalHeader.vue";
 import { useStore } from "vuex";
 import { GlobalDataProps } from "../store";
 import Loader from '../components/Loader.vue'
+import Message from '../components/Message.vue'
 /* 自定义loading */
 
 /* import ValidateInput, { RulesProp } from "./components/ValidateInput.vue";
@@ -60,7 +62,7 @@ export default defineComponent({
   name: "Home",
   components: {
     ColumnList,
-    GlobalHeader,Loader
+    GlobalHeader,Loader, Message
   },
   setup() {
     // const list = testData;
