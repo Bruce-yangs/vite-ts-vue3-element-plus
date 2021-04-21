@@ -32,7 +32,7 @@ export default defineComponent({
     console.log(props)
     const route = useRoute();
     // const datas = reactive({ count: 521 });
-    const currentId = route.params.id 
+    const currentId: any = route.params.id 
     /* onMounted(() => {
       store.dispatch('fetchColumn', currentId)
       store.dispatch('fetchPost', currentId)
