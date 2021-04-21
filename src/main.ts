@@ -17,7 +17,10 @@ const app = createApp(App)
 //全局挂载
 app.config.globalProperties.$axios = axios
 
-app.use(ElementPlus)
-  .use(store)
-  .use(router)
+app
+.use(ElementPlus)
+.use(store)
+.use(router)
   .mount('#app')
+  
+  

@@ -43,7 +43,7 @@ export interface GlobalDataProps {
     columns: ColumnProps[];
     posts: PostProps[];
     user: UserProps;
-    loading: Boolean;
+    loading: boolean;
     token: string;
 }
 const getAndCommit = async(url: string, mutationName: string, commit: Commit) => {

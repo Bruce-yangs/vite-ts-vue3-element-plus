@@ -3,7 +3,7 @@
       <img src="../assets/404.gif" alt="404">
     </div>
 </template>
-<script>
+<script >
 export default {
   name: '404',
   components: {

@@ -75,7 +75,8 @@ import ColumnList, { ColumnProps } from "./components/ColumnList.vue";
 import GlobalHeader, { UserProps } from "./components/GlobalHeader.vue";
 import ValidateInput, { RulesProp } from "./components/ValidateInput.vue";
 import ValidateForm from "./components/ValidateForm.vue";
-import { defineComponent, ref } from "vue";
+import { defineComponent, ref/* , getCurrentInstance  */} from "vue";
+
 // import HelloWorld from './components/HelloWorld.vue'
 // import Index from './views/Index.vue'
 const testData: ColumnProps[] = [
@@ -114,6 +115,8 @@ export default defineComponent({
     const emailVal = ref("yang@qq.com");
     const QQVal = ref("469402333");
     const inputRef= ref<any>();
+    // const { ctx } = getCurrentInstance()
+
     const emailRules: RulesProp = [
       {
         type: "required",
@@ -133,6 +136,22 @@ export default defineComponent({
     const onFormSubmit = (result: boolean) => {
       console.log("123", result);
     };
+
+
+
+
+    // ctx.$axios.get('https://api.apiopen.top/singlePoetry')
+    // ctx.$axios.get('https://api.apiopen.top/videoRecommend?id=127398')
+
+    /* ctx.$axios.get('/common/authCode')
+      .then((res: any) => {
+        console.log(res.data)
+        ctx.$message({
+          message: '登陆成功',
+          type: 'success'
+        })
+      }) */
+       
     return { list: testData,  emailRules,QQVal, QQRules, onFormSubmit, emailVal, inputRef };
   },
   components: {

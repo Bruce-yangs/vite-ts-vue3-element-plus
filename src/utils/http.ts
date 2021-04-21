@@ -27,7 +27,8 @@ const endLoading = () => {
 // 请求拦截
 axios.interceptors.request.use((config: AxiosRequestConfig) => {
   //默认请求带上相关参数 icode: 'C6A6C4086133360B'
-  config.params = { ...config.params, icode: 'C6A6C4086133360B'}
+  // config.params = { ...config.params, icode: 'C6A6C4086133360B'}
+
   /* store.commit('setLoading',true)
   console.log(store.state.loading) */
   // 加载loading
@@ -59,5 +60,8 @@ axios.interceptors.response.use((response: AxiosResponse<any>) => {
   // 错误提醒
   return Promise.reject(e)
 })
+
+/* axios.defaults.baseURL = "/api";
+axios.defaults.withCredentials = true;   */
 
 export default axios
