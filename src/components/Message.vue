@@ -12,7 +12,7 @@
   </teleport>
 </template>
 
-<script setup lang="ts">
+<script  lang="ts">/* setup */
 export type MessageType = "success" | "error" | "default";
 import { PropType, ref } from "vue";
 export default {

@@ -127,8 +127,8 @@ const router = createRouter({
 })
 
 router.beforeEach((to, from, next) => {
-  console.log(to)
-  console.log(from)
+  /* console.log(to)
+  console.log(from) */
   if(to.meta.requiredLogin  && !store.state.user.isLogin) {
     next({name: 'Login'})/* LoginRegister */
   } 

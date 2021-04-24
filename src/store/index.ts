@@ -98,7 +98,7 @@ const store = createStore<GlobalDataProps>({
             const { token } = rawData.data
             state.token = token
             axios.defaults.headers.common.Authorization = `Bearer ${token}`
-            state.token = rawData.data.token
+            // state.token = rawData.data.token
             localStorage.setItem('token', token)
         },
         setError(state, e: GlobalErrorProps) {
