@@ -42,7 +42,6 @@ export default defineComponent({
     const column = testData
     const list = testPosts
     console.log(list)
-
     console.log(column)
     return {  column,list,currentId };
   },
