@@ -1,6 +1,6 @@
 <template>
   <div class="file-upload">
-    <div class="file-upload-container" @click.prevent="triggerUpload">
+    <div class="file-upload-container" v-bind="$attrs" @click.prevent="triggerUpload">
       <slot name="loading" v-if="fileStatus === 'loading'">
         <button class="btn btn-primary">正在上传...</button>
       </slot>
