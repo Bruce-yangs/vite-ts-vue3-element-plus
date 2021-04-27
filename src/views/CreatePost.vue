@@ -1,6 +1,8 @@
 <template>
   <div class="create-post-page">
     <h4>{{isEditMode ? '编辑文章' : '新建文章'}}</h4>
+    <uploader action="/upload" class="d-flex align-items-center justify-content-center bg-light text-secondary w-100 my-4">
+    </uploader>
     <!-- <uploader
       action="/upload"
       :beforeUpload="uploadCheck"
@@ -60,7 +62,7 @@ import ValidateInput, { RulesProp } from '../components/ValidateInput.vue'
 import ValidateForm from '../components/ValidateForm.vue'
 // import {  PostProps  } from "../data/testData"
 
-// import Uploader from '../components/Uploader.vue'
+import Uploader from '../components/Uploader.vue'
 /* import createMessage from '../components/createMessage'
 import { beforeUploadCheck } from '../helper' */
 export default defineComponent({
@@ -68,7 +70,7 @@ export default defineComponent({
   components: {
     ValidateInput,
     ValidateForm,
-    // Uploader
+    Uploader
   },
   setup() {
     const uploadedData = ref()

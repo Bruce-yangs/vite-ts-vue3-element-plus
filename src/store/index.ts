@@ -2,14 +2,20 @@ import { Commit, createStore } from 'vuex'
 // import { testData, testPosts,/*  ColumnProps, PostProps */ } from "../data/testData"
 import axios from '../utils/http'
 
-interface UserProps {
+export interface ResponseType<T = {}> {
+    code: number;
+    msg: string;
+    data: T;
+}
+
+export interface UserProps {
     isLogin: boolean,
     name?: string,
     id?: number,
     columnId?: number
 }
 
-interface ImageProps {
+export interface ImageProps {
     _id?: string;
     url?: string;
     createdAt?: string;
