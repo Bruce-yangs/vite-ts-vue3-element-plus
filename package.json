@@ -7,10 +7,12 @@
     "serve": "vite preview"
   },
   "dependencies": {
+    "@types/markdown-it": "^12.0.1",
     "axios": "^0.21.1",
     "bootstrap": "^5.0.0-beta3",
     "core-js": "^3.9.1",
     "element-plus": "^1.0.2-beta.33",
+    "markdown-it": "^12.0.6",
     "mitt": "^2.1.0",
     "vue": "^3.0.5",
     "vue-router": "^4.0.4",
