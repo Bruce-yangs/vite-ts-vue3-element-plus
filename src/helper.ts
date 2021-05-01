@@ -46,17 +46,18 @@ interface TestProps {
   name: string;
 }
 const testData: TestProps[] = [{ _id: '1', name: 'a' }, { _id: '2', name: 'b' }]
-
+/* extends { _id?: string } 为约束泛型 表明 T 有id 这个字段属性 */
 export const arrToObj = <T extends { _id?: string }>(arr: Array<T>) => {
   return arr.reduce((prev, current) => {
     if (current._id) {
       prev[current._id] = current
     }
     return prev
-  }, {} as { [key: string]: T })
+  }, {} as { [key: string]: T }) /*  as { [key: string]: T } 为类型断言   */
 }
 const result = arrToObj(testData)
 console.log(result)
+/* <T>(obj: {[key: string]: T})  泛型*/
 export const objToArr = <T>(obj: {[key: string]: T}) => {
   return Object.keys(obj).map(key => obj[key])
 }
